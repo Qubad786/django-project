@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div style="width: 25%;margin-right: auto;margin-left: auto">
+
+        <form action="{% url 'edit_profile' %}" method="post">
+            {% csrf_token %}
+            {{ profile_form }}
+            <br/><br/>
+            <input type="submit" name="btn_save" value="save"/>
+        </form>
+
+        {{ msg }}
+
+    </div>
+</body>
+</html>

@@ -36,11 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djangotestapp',
-    'djangotestapp.user',
-    'djangotestapp.products',
-    'djangotestapp.reservations',
-    'djangotestapp.sales',
+    'inventoryapp',
+    'inventoryapp.user',
+    'inventoryapp.products',
+    'inventoryapp.reservations',
+    'inventoryapp.sales',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,10 +57,10 @@ MIDDLEWARE_CLASSES = (
 AUTH_USER_MODEL = 'user.User'
 
 AUTHENTICATION_BACKENDS = [
-    'djangotestapp.user.authenticate_backend.EmailAuthenticationBackend'
+    'inventoryapp.user.authenticate_backend.EmailAuthenticationBackend'
     , ]
 
-ROOT_URLCONF = 'djangotestapp.urls'
+ROOT_URLCONF = 'inventoryapp.urls'
 
 TEMPLATES = [
     {

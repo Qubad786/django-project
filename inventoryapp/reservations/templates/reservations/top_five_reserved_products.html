@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h3 style="margin-left: auto;margin-right: auto; width:75%;"><a style="text-decoration: none;" href="{% url 'account' %}">Back to Home</a></h3>
+
+{% if top_five_reserved_products %}
+
+    <table border="1" style="margin-left: auto;margin-right: auto; width:75%;">
+
+    <tr>
+        <td>
+            Product Name
+        </td>
+
+        <td>
+            Type
+        </td>
+
+        <td>
+            Brand
+        </td>
+
+        <td>
+            Ordered Units
+        </td>
+
+    </tr>
+
+        {% for product in top_five_reserved_products %}
+
+            <tr>
+
+                <td>
+                    {{ product.product__product_name|default:"Nill" }}
+                </td>
+
+                <td>
+                    {{ product.product__type|default:"Nill" }}
+                </td>
+
+                <td>
+                    {{ product.product__brand|default:"Nill" }}
+                </td>
+
+                <td>
+                    {{ product.units|default:"Nill" }}
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+{% else %}
+
+    <h3> No Orders have been received yet! </h3>
+
+{% endif %}
+
+</body>
+</html>

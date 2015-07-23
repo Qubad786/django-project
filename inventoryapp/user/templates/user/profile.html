@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div style="width: 25%;margin-right: auto;margin-left: auto">
+
+        Name : {{ user_profile.username|capfirst }}
+        {% filter linebreaks %}{% endfilter %}
+        Email : {{ user_profile.email }}
+        {% filter linebreaks %}{% endfilter %}
+        Address : {{ user_profile.address }}
+        {% filter linebreaks %}{% endfilter %}
+        gender : {{ user_profile.gender|capfirst }}
+        {% filter linebreaks|linebreaks %}
+        {%  endfilter %}
+        <a href="{% url 'edit_profile' %}"> Edit </a>
+        {% filter linebreaks|linebreaks %}
+        {%  endfilter %}
+        {{ msg }}
+
+    </div>
+
+</body>
+</html>
