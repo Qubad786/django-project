@@ -1,7 +1,9 @@
+from django.core.urlresolvers import reverse
+
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from inventoryapp.user.models import User
 
+from inventoryapp.user.models import User
 from inventoryapp.user.forms.sign_up_form import SignUpForm
 
 
@@ -21,11 +23,19 @@ class SignUpView(View):
             user_password = form.cleaned_data.get('password')
             user_address = form.cleaned_data.get('address')
             user_gender = form.cleaned_data.get('gender')
+            is_admin = form.cleaned_data.get('is_admin')
 
             try:
-                User.objects.create_user(email=user_email, username=user_name, gender=user_gender, address=user_address
-                                         , password=user_password)
-                response = redirect('/')
+                if is_admin:
+                    User.objects.create_superuser(email=user_email, username=user_name, gender=user_gender,
+                                                  address=user_address
+                                                  , password=user_password)
+                    response = redirect(reverse('admin:index'))
+                else:
+                    User.objects.create_user(email=user_email, username=user_name, gender=user_gender,
+                                             address=user_address
+                                             , password=user_password)
+                    response = redirect('/')
             except ValueError as ex:
                 response = render(request, self.template_name, dict(msg=ex.message, sign_up_form=form))
 

@@ -17,6 +17,7 @@ class SignUpForm(forms.Form):
 
     GENDER_CHOICES = [('male', 'Male'), ('female', 'Female')]
     gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect())
+    is_admin = forms.BooleanField(required=False)
 
     class EmailAlreadyExists(EmailAlreadyExists):
         pass

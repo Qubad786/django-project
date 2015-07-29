@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from inventoryapp.reservations.models import Reservations
+
+
+class ReservationsInline(admin.TabularInline):
+    model = Reservations
+    extra = 1
+
+
+class ReservationsAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Reservations, ReservationsAdmin)

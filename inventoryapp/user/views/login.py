@@ -35,9 +35,9 @@ class LoginView(View):
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
             remember_me = form.cleaned_data.get('remember_me')
-            user = authenticate(email=email, password=password)
+            user = authenticate(username=email, password=password)
 
-            if user is not None:
+            if user:
                 if user.is_active:
 
                     login(request, user)
