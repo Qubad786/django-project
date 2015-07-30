@@ -2,11 +2,13 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventoryapp/style.css' %}" />
     <title></title>
 </head>
 <body>
 
-    <div style="width: 25%;margin-right: auto;margin-left: auto">
+    <div class="center-align-less-width">
 
         Name : {{ user_profile.username|capfirst }}
         {% filter linebreaks %}{% endfilter %}
@@ -20,7 +22,6 @@
         <a href="{% url 'edit_profile' %}"> Edit </a>
         {% filter linebreaks|linebreaks %}
         {%  endfilter %}
-        {{ msg }}
 
     </div>
 

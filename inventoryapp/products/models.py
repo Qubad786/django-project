@@ -3,13 +3,13 @@ from django.db import models
 
 
 class Products(models.Model):
-    product_name = models.CharField(max_length=255)
-    type = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    kind = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     units = models.IntegerField(default=0)
     actual_unit_price = models.DecimalField(default=0, decimal_places=3, max_digits=100)
     profit_factor = models.DecimalField(default=0, decimal_places=3, max_digits=100)
-    adding_date = models.DateField(default=timezone.now)
+    added_on = models.DateField(default=timezone.now)
 
     @property
     def get_unit_selling_price(self):
