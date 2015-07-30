@@ -37,11 +37,11 @@
 
         <tr>
             <td>
-                {{ product.product_name|default:'Nil' }}
+                {{ product.name|default:'Nil' }}
             </td>
 
             <td>
-                {{ product.type|default:'Nil' }}
+                {{ product.kind|default:'Nil' }}
             </td>
 
             <td>
@@ -57,7 +57,7 @@
             </td>
 
             <td>
-                 {{ product.adding_date|default:'Nil' }}
+                 {{ product.added_on|default:'Nil' }}
             </td>
 
             {% if product.units == 0 %}

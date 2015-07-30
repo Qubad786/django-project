@@ -20,16 +20,11 @@ class EditProfileView(View):
         form = ProfileForm(request.POST)
         if form.is_valid():
 
-            user_password = form.cleaned_data.get('password')
-            user_address = form.cleaned_data.get('address')
-            user_gender = form.cleaned_data.get('gender')
-            user_name =  form.cleaned_data.get('name')
-
             user = request.user
-            user.username = user_name
-            user.set_password(user_password)
-            user.gender = user_gender
-            user.address = user_address
+            user.username = form.cleaned_data.get('name')
+            user.set_password(form.cleaned_data.get('password'))
+            user.gender = form.cleaned_data.get('gender')
+            user.address = form.cleaned_data.get('address')
             user.save()
 
             response = redirect('/')

@@ -14,7 +14,7 @@ class OrdersView(View):
     def post(self, request):
         reservation_id = request.POST.get('reservation_id')
         if reservation_id:
-            order = Reservations.objects.filter(pk=int(reservation_id))[0]
+            order = Reservations.objects.get(pk=int(reservation_id))
             Sales(user=order.user, product=order.product, units=order.ordered_units).save()
             order.delete()
         reservations = request.user.reservations.all()

@@ -57,11 +57,11 @@
                 </td>
 
                 <td>
-                    {{ sale.product.product_name|default:'Nil' }}
+                    {{ sale.product.name|default:'Nil' }}
                 </td>
 
                 <td>
-                    {{ sale.product.type|default:'Nil' }}
+                    {{ sale.product.kind|default:'Nil' }}
                 </td>
 
                 <td>
@@ -77,7 +77,7 @@
                 </td>
 
                 <td>
-                    {{ sale.sold_date|default:'Nil' }}
+                    {{ sale.sold_on|default:'Nil' }}
                 </td>
 
                 <td>

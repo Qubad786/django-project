@@ -20,7 +20,7 @@ class ReservationsManager(Manager):
         """
 
         top_five_reserved_products = Reservations.objects\
-            .values('product__product_name', 'product__type', 'product__brand')\
+            .values('product__name', 'product__kind', 'product__brand')\
             .annotate(units=Sum('ordered_units')) \
             .order_by('-units')[:5]
         return top_five_reserved_products
@@ -50,7 +50,7 @@ class Reservations(models.Model):
     product = models.ForeignKey('products.Products', related_name='reservations')
     price = models.DecimalField(default=0, decimal_places=3, max_digits=100)
     ordered_units = models.IntegerField(default=0)
-    order_date = models.DateField(default=timezone.now)
+    ordered_on = models.DateField(default=timezone.now)
 
     objects = ReservationsManager()
 

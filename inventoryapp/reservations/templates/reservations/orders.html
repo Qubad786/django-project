@@ -38,11 +38,11 @@
             <tr>
 
                 <td>
-                    {{ reservation.product.product_name|default:'Nil' }}
+                    {{ reservation.product.name|default:'Nil' }}
                 </td>
 
                 <td>
-                    {{ reservation.product.type|default:'Nil' }}
+                    {{ reservation.product.kind|default:'Nil' }}
                 </td>
 
                 <td>
@@ -58,7 +58,7 @@
                 </td>
 
                 <td>
-                    {{ reservation.order_date|default:'Nil' }}
+                    {{ reservation.ordered_on|default:'Nil' }}
                 </td>
 
                 <td>
