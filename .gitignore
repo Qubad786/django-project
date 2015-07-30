@@ -3,3 +3,4 @@
 .git
 .idea
 .project
+__pycache__
