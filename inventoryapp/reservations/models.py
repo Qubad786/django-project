@@ -10,7 +10,7 @@ class ReservationsManager(Manager):
     def get_top_five_reserved_products(self):
 
         """
-        SQL Query: Top 5 reserved products
+        SQL Query: Top 5 reserved reservations
         select product_name, type, brand, sum(ordered_units) as units from
         (select products_products.product_name, products_products.type, products_products.brand,
          reservations_reservations.ordered_units from products_products,reservations_reservations

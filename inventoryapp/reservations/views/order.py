@@ -42,7 +42,7 @@ class OrderView(View):
                                       dict(msg='That many units are not available.', order_form=order_form))
                 else:
                     Reservations(user=request.user, product=product, ordered_units=units).save()
-                    response = redirect(reverse('products'))
+                    response = redirect(reverse('reservations'))
             else:
                 response = redirect(reverse('account'))
         else:

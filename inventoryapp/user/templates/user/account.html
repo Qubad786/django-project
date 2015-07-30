@@ -2,32 +2,34 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventoryapp/style.css' %}" />
+    <title>Account</title>
 </head>
 <body>
     <h3> Welcome {{ username }} ! </h3>
 
     <br/><br/>
 
-    <a style="text-decoration: none;" href="{% url 'profile' %}"> Profile </a>
+    <a class="no-decoration" href="{% url 'profile' %}"> Profile </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'logout' %}"> Logout </a>
+    <a class="no-decoration" href="{% url 'logout' %}"> Logout </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'add_product' %}"> Add Product </a>
+    <a class="no-decoration" href="{% url 'add_product' %}"> Add Product </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'products' %}"> Products </a>
+    <a class="no-decoration" href="{% url 'products' %}"> Products </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'orders' %}"> My Orders </a>
+    <a class="no-decoration" href="{% url 'orders' %}"> My Orders </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'sales' %}"> Sales </a>
+    <a class="no-decoration" href="{% url 'sales' %}"> Sales </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none; "href="{% url 'top_five_reserved_products' %}"> Top 5 most ordered products </a>
+    <a class="no-decoration" href="{% url 'top_five_reserved_products' %}"> Top 5 most ordered products </a>
     {% filter linebreaks %} {% endfilter %}
-    <a style="text-decoration: none;" href="{% url 'top_five_customers' %}"> Top 5 Customers (who ordered most) </a>
+    <a class="no-decoration" href="{% url 'top_five_customers' %}"> Top 5 Customers (who ordered most) </a>
     {% filter linebreaks %} {% endfilter %}
 
 
-    <div style="width: 25%;margin-right: auto;margin-left: auto">
+    <div class="center-align-less-width">
 
         <form action="{% url 'account' %}" method="post">
             {% csrf_token %}

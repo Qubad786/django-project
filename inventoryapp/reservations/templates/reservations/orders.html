@@ -2,15 +2,17 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventoryapp/style.css' %}" />
+    <title>Orders</title>
 </head>
 <body>
 
-<h3 style="margin-left: auto;margin-right: auto; width:75%; text-decoration: none;"><a style="text-decoration: none;" href="{% url 'account' %}">Back to Home</a></h3>
+<h3 class="center-align"><a class="no-decoration" href="{% url 'account' %}">Back to Home</a></h3>
 
 {% if reservations %}
 
-    <table border="1" style="margin-left: auto;margin-right: auto; width:75%;">
+    <table border="1" class="center-align">
 
         <tr>
             <td>
@@ -65,7 +67,7 @@
                     <form action="{% url 'orders' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="reservation_id" value='{{ reservation.id|default:'' }}'>
-                        <input type="submit" value="Pay" style="width: 100%;">
+                        <input type="submit" value="Pay" class="fill-parent-element">
                     </form>
                 </td>
 
