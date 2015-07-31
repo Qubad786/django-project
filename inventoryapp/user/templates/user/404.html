@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'inventoryapp/style.css' %}" />
-    <title> 404 Not Found </title>
-</head>
-<body>
-{% filter linebreaks|linebreaks|linebreaks %}
-{% endfilter %}
+{% extends "inventoryapp/base.html" %}
 
-<div class="center-align-form">
-    <h1 style="text-align: center">  404 NOT FOUND  </h1>
-</div>
 
-</body>
-</html>
+{% block title %} 404 NOT FOUND {% endblock %}
+
+{% block content %}
+
+    {% filter linebreaks|linebreaks|linebreaks %}
+    {% endfilter %}
+
+    <div class="center-align-form">
+        <h1 class="center-align-text">  404 NOT FOUND  </h1>
+    </div>
+
+{% endblock %}
