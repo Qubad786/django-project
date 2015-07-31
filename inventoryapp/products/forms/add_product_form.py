@@ -5,15 +5,15 @@ from django.core.exceptions import ValidationError
 
 class AddProductForm(forms.Form):
 
-    TYPE_CHOICES = [('all-season', 'All Season'), ('all-terrain', 'All Terrain'),
+    KIND_CHOICES = [('all-season', 'All Season'), ('all-terrain', 'All Terrain'),
                     ('mud', 'Mud'), ('snow', 'snow/winter'), ('low-profile', 'Low Profile'),
                     ('off-road', 'Off Road'), ('performance', 'Performance'), ('suv', 'SUV'),
                     ('truck', 'Truck'),]
 
     PRODUCT_CHOICES = [('tire', 'Tire'),]
 
-    product_name = forms.ChoiceField(choices=PRODUCT_CHOICES)
-    type = forms.ChoiceField(choices=TYPE_CHOICES)
+    name = forms.ChoiceField(choices=PRODUCT_CHOICES)
+    kind = forms.ChoiceField(choices=KIND_CHOICES)
     brand = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%'}), max_length=255)
     units = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%'}))
     stock_price = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%'}))

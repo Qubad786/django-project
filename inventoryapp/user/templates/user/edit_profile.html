@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <div style="width: 25%;margin-right: auto;margin-left: auto">
+{% extends "inventoryapp/base.html" %}
+
+
+{% block title %} Edit Profile {% endblock %}
+
+{% block content %}
+
+    <div class="center-align-less-width">
 
         <form action="{% url 'edit_profile' %}" method="post">
             {% csrf_token %}
@@ -17,5 +17,5 @@
         {{ msg }}
 
     </div>
-</body>
-</html>
+
+{% endblock %}

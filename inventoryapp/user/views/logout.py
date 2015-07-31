@@ -4,7 +4,6 @@ from django.contrib.auth import logout
 
 
 class LogoutView(View):
-    template_name = None
 
     # noinspection PyMethodMayBeStatic
     def get(self, request):

@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "inventoryapp/base.html" %}
 
-    <div style="width: 25%;margin-right: auto;margin-left: auto">
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+    <div class="center-align-less-width">
 
         Name : {{ user_profile.username|capfirst }}
         {% filter linebreaks %}{% endfilter %}
@@ -20,9 +19,7 @@
         <a href="{% url 'edit_profile' %}"> Edit </a>
         {% filter linebreaks|linebreaks %}
         {%  endfilter %}
-        {{ msg }}
 
     </div>
 
-</body>
-</html>
+{% endblock %}

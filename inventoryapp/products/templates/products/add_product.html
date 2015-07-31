@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>add product</title>
-</head>
-<body>
 
 
-<div style='margin-left: auto;margin-right: auto;width: 50%;'>
+{% extends "inventoryapp/base.html" %}
+
+
+{% block title %} Add Product {% endblock %}
+
+{% block content %}
+
+<div class="center-align-form">
 
     <form method="post" action="{%  url 'add_product' %}">
         {% csrf_token %}
@@ -18,5 +18,4 @@
 
 </div>
 
-</body>
-</html>
+{% endblock %}

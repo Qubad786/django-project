@@ -1,101 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-<h3 style="margin-left: auto;margin-right: auto; width:75%;"><a style="text-decoration: none; text-align: center" href="{% url 'account' %}">Back to Home</a></h3>
+{% extends "inventoryapp/base.html" %}
 
 
-{% if all_sales %}
+{% block title %} Sales {% endblock %}
 
-    <table border="1" style="margin-left: auto;margin-right: auto;width: 75%">
+{% block content %}
 
-        <tr>
-            <td>
-                Customer's Name
-            </td>
+    <h3 class="center-align"><a class="no-decoration" href="{% url 'account' %}">Back to Home</a></h3>
 
-            <td>
-                Customer's Email
-            </td>
 
-            <td>
-                Product Name
-            </td>
-            <td>
-                Type
-            </td>
-            <td>
-                Brand
-            </td>
-            <td>
-                Units
-            </td>
-            <td>
-                Price($)
-            </td>
-            <td>
-                Sold Date
-            </td>
-            <td>
-                Profit($)
-            </td>
-        </tr>
+    {% if all_sales %}
 
-        {% for sale in all_sales %}
+        <table border="1" class="center-align">
 
             <tr>
                 <td>
-                    {{ sale.user.username|default:'Nil' }}
+                    Customer's Name
                 </td>
 
                 <td>
-                    {{ sale.user.email|default:'Nil' }}
+                    Customer's Email
                 </td>
 
                 <td>
-                    {{ sale.product.product_name|default:'Nil' }}
+                    Product Name
                 </td>
-
                 <td>
-                    {{ sale.product.type|default:'Nil' }}
+                    Type
                 </td>
-
                 <td>
-                    {{ sale.product.brand|default:'Nil' }}
+                    Brand
                 </td>
-
                 <td>
-                    {{ sale.units|default:'Nil' }}
+                    Units
                 </td>
-
                 <td>
-                    {{ sale.product.get_unit_selling_price|default:'Nil' }}
+                    Price($)
                 </td>
-
                 <td>
-                    {{ sale.sold_date|default:'Nil' }}
+                    Sold Date
                 </td>
-
                 <td>
-                    {{ sale.profit|default:'Nil' }}
+                    Profit($)
                 </td>
-
             </tr>
 
-        {% endfor %}
+            {% for sale in all_sales %}
 
-    </table>
+                <tr>
+                    <td>
+                        {{ sale.user.username|default:'Nil' }}
+                    </td>
 
-{% else %}
+                    <td>
+                        {{ sale.user.email|default:'Nil' }}
+                    </td>
 
-    <h2> Didn't sell anything yet! </h2>
+                    <td>
+                        {{ sale.product.name|default:'Nil' }}
+                    </td>
 
-{% endif %}
+                    <td>
+                        {{ sale.product.kind|default:'Nil' }}
+                    </td>
 
+                    <td>
+                        {{ sale.product.brand|default:'Nil' }}
+                    </td>
 
-</body>
-</html>
+                    <td>
+                        {{ sale.units|default:'Nil' }}
+                    </td>
+
+                    <td>
+                        {{ sale.product.get_unit_selling_price|default:'Nil' }}
+                    </td>
+
+                    <td>
+                        {{ sale.sold_on|default:'Nil' }}
+                    </td>
+
+                    <td>
+                        {{ sale.profit|default:'Nil' }}
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <h2> Didn't sell anything yet! </h2>
+
+    {% endif %}
+
+{% endblock %}

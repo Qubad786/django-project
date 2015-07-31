@@ -7,7 +7,7 @@ class Sales(models.Model):
     product = models.ForeignKey('products.Products', related_name='sales')
     profit = models.DecimalField(default=0, decimal_places=3, max_digits=100)
     units = models.IntegerField(default=0)
-    sold_date = models.DateField(default=timezone.now)
+    sold_on = models.DateField(default=timezone.now)
 
     def save(self, *args, **kwargs):
         self.profit = (self.product.get_unit_selling_price - self.product.actual_unit_price)*self.units

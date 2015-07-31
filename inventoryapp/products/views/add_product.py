@@ -17,13 +17,13 @@ class AddProductView(View):
         response = None
 
         if add_product_form.is_valid():
-            product_name = add_product_form.cleaned_data.get('product_name')
-            type = add_product_form.cleaned_data.get('type')
+            name = add_product_form.cleaned_data.get('name')
+            kind = add_product_form.cleaned_data.get('kind')
             brand = add_product_form.cleaned_data.get('brand')
             units = add_product_form.cleaned_data.get('units')
             stock_price = add_product_form.cleaned_data.get('stock_price')
             profit_factor = add_product_form.cleaned_data.get('profit_in_percentage')
-            Products(product_name=product_name, type=type, brand=brand, units=units,
+            Products(name=name, kind=kind, brand=brand, units=units,
                      actual_unit_price=stock_price, profit_factor=profit_factor).save()
             response = redirect(reverse('account'))
         else:

@@ -3,9 +3,9 @@ from django.core.exceptions import ValidationError
 
 
 class OrderForm(forms.Form):
-    product_name = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%', 'readonly': 'readonly'}),
+    name = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%', 'readonly': 'readonly'}),
                                    max_length=255)
-    type = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%', 'readonly': 'readonly'}),
+    kind = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%', 'readonly': 'readonly'}),
                            max_length=255)
     brand = forms.CharField(widget=forms.TextInput(attrs={'style': 'width: 100%', 'readonly': 'readonly'}),
                             max_length=255)

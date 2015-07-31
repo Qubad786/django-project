@@ -1,66 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "inventoryapp/base.html" %}
 
-<h3 style="margin-left: auto;margin-right: auto; width:75%;"><a style="text-decoration: none;" href="{% url 'account' %}">Back to Home</a></h3>
 
-{% if top_five_reserved_products %}
+{% block title %} Top Products {% endblock %}
 
-    <table border="1" style="margin-left: auto;margin-right: auto; width:75%;">
+{% block content %}
 
-    <tr>
-        <td>
-            Product Name
-        </td>
+    <h3 class="center-align"><a class="no-decoration" href="{% url 'account' %}">Back to Home</a></h3>
 
-        <td>
-            Type
-        </td>
+    {% if top_five_reserved_products %}
 
-        <td>
-            Brand
-        </td>
+        <table border="1" class="center-align">
 
-        <td>
-            Ordered Units
-        </td>
+        <tr>
+            <td>
+                Product Name
+            </td>
 
-    </tr>
+            <td>
+                Type
+            </td>
 
-        {% for product in top_five_reserved_products %}
+            <td>
+                Brand
+            </td>
 
-            <tr>
+            <td>
+                Ordered Units
+            </td>
 
-                <td>
-                    {{ product.product__product_name|default:"Nill" }}
-                </td>
+        </tr>
 
-                <td>
-                    {{ product.product__type|default:"Nill" }}
-                </td>
+            {% for product in top_five_reserved_products %}
 
-                <td>
-                    {{ product.product__brand|default:"Nill" }}
-                </td>
+                <tr>
 
-                <td>
-                    {{ product.units|default:"Nill" }}
-                </td>
+                    <td>
+                        {{ product.product__name|default:"Nill" }}
+                    </td>
 
-            </tr>
+                    <td>
+                        {{ product.product__kind|default:"Nill" }}
+                    </td>
 
-        {% endfor %}
+                    <td>
+                        {{ product.product__brand|default:"Nill" }}
+                    </td>
 
-    </table>
-{% else %}
+                    <td>
+                        {{ product.units|default:"Nill" }}
+                    </td>
 
-    <h3> No Orders have been received yet! </h3>
+                </tr>
 
-{% endif %}
+            {% endfor %}
 
-</body>
-</html>
+        </table>
+    {% else %}
+
+        <h3> No Orders have been received yet! </h3>
+
+    {% endif %}
+
+{% endblock %}
