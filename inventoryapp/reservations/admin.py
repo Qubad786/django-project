@@ -14,12 +14,12 @@ class ReservationsAdmin(admin.ModelAdmin):
     search_fields = ('user__email', "user__username", 'product__name', "product__kind")
 
     # noinspection PyMethodMayBeStatic
-    def product_kind(self, obj):
-        return obj.product.kind
+    def product_kind(self, reservation):
+        return reservation.product.kind
 
     # noinspection PyMethodMayBeStatic
-    def product_name(self, obj):
-        return obj.product.name
+    def product_name(self, reservation):
+        return reservation.product.name
 
 
 admin.site.register(Reservations, ReservationsAdmin)

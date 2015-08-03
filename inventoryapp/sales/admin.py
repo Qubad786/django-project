@@ -14,12 +14,12 @@ class SalesAdmin(admin.ModelAdmin):
     search_fields = ('user__email', "user__username", 'product__name', "product__kind")
 
     # noinspection PyMethodMayBeStatic
-    def product_kind(self, obj):
-        return obj.product.kind
+    def product_kind(self, sales):
+        return sales.product.kind
 
     # noinspection PyMethodMayBeStatic
-    def product_name(self, obj):
-        return obj.product.name
+    def product_name(self, sales):
+        return sales.product.name
 
 
 admin.site.register(Sales, SalesAdmin)
