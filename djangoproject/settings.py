@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -28,6 +28,18 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = 'static'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +48,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli.dashboard',
+    'grappelli',
     'django.contrib.admin',
     'inventoryapp',
     'inventoryapp.user',
@@ -62,6 +76,10 @@ AUTHENTICATION_BACKENDS = [
     , ]
 
 ROOT_URLCONF = 'inventoryapp.urls'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)
 
 TEMPLATES = [
     {
@@ -95,7 +113,7 @@ DATABASES = {
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
-        }
+    }
 }
 
 
@@ -112,14 +130,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
+
 LOGIN_URL = ''
+
+# grappelli settings
+
+GRAPPELLI_ADMIN_TITLE = 'Admin Panel'
+
+GRAPPELLI_INDEX_DASHBOARD = 'custom_admin_dashboard.CustomIndexDashboard'

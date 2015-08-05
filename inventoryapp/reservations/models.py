@@ -5,10 +5,8 @@ from django.utils import timezone
 
 
 class ReservationsManager(Manager):
-
     # noinspection PyMethodMayBeStatic
     def get_top_five_reserved_products(self):
-
         """
         SQL Query: Top 5 reserved reservations
         select product_name, type, brand, sum(ordered_units) as units from
@@ -19,15 +17,14 @@ class ReservationsManager(Manager):
 
         """
 
-        top_five_reserved_products = Reservations.objects\
-            .values('product__name', 'product__kind', 'product__brand')\
-            .annotate(units=Sum('ordered_units')) \
-            .order_by('-units')[:5]
+        top_five_reserved_products = Reservations.objects \
+                                         .values('product__name', 'product__kind', 'product__brand') \
+                                         .annotate(units=Sum('ordered_units')) \
+                                         .order_by('-units')[:5]
         return top_five_reserved_products
 
     # noinspection PyMethodMayBeStatic
     def get_top_five_customers_based_on_reservations(self):
-
         """
         SQL Query: TOP 5 Customers
         select username, email, sum(ordered_units) as units from
@@ -38,10 +35,10 @@ class ReservationsManager(Manager):
 
         """
 
-        top_five_customers_based_on_reservations = Reservations.objects\
-            .values('user__username', 'user__email') \
-            .annotate(units=Sum('ordered_units')) \
-            .order_by('-units')[:5]
+        top_five_customers_based_on_reservations = Reservations.objects \
+                                                       .values('user__username', 'user__email') \
+                                                       .annotate(units=Sum('ordered_units')) \
+                                                       .order_by('-units')[:5]
         return top_five_customers_based_on_reservations
 
 
@@ -59,6 +56,10 @@ class Reservations(models.Model):
         self.product.units -= self.ordered_units
         self.product.save()
         super(Reservations, self).save(*args, **kwargs)
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return ("user__username", "user__email", "product__name", "product__kind")
 
 
 

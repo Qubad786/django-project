@@ -10,8 +10,12 @@ class Sales(models.Model):
     sold_on = models.DateField(default=timezone.now)
 
     def save(self, *args, **kwargs):
-        self.profit = (self.product.get_unit_selling_price - self.product.actual_unit_price)*self.units
+        self.profit = (self.product.get_unit_selling_price - self.product.actual_unit_price) * self.units
         super(Sales, self).save(*args, **kwargs)
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return ("user__username", "user__email", "product__name", "product__kind")
 
 
 
