@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli.dashboard',
     'grappelli',
     'django.contrib.admin',
     'inventoryapp',
@@ -144,3 +145,5 @@ LOGIN_URL = ''
 # grappelli settings
 
 GRAPPELLI_ADMIN_TITLE = 'Admin Panel'
+
+GRAPPELLI_INDEX_DASHBOARD = 'custom_admin_dashboard.CustomIndexDashboard'
